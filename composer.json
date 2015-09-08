@@ -21,8 +21,8 @@
     ],
     "require": {
         "php": ">=5.6.0",
-        "scabbiafw/scabbia2-interfaces": "^0.1.0",
-        "scabbiafw/scabbia2-helpers": "^0.1.0"
+        "scabbiafw/scabbia2-interfaces": "*",
+        "scabbiafw/scabbia2-helpers": "*"
     },
     "require-dev": {
     },
