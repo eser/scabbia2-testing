@@ -16,6 +16,7 @@ namespace Scabbia\Testing;
 use Scabbia\Interfaces\IInterface;
 use Scabbia\Interfaces\Interfaces;
 use Scabbia\Tasks\TaskBase;
+use Scabbia\Testing\Testing;
 
 /**
  * A small test implementation which helps us during the development of
@@ -25,7 +26,7 @@ use Scabbia\Tasks\TaskBase;
  * @author      Eser Ozvataf <eser@sent.com>
  * @since       2.0.0
  */
-class Test extends TaskBase
+class TestTask extends TaskBase
 {
     /**
      * Initializes a task
@@ -40,24 +41,40 @@ class Test extends TaskBase
     /**
      * Executes the task
      *
-     * @param array $uParameters parameters
+     * @param array      $uParameters  parameters
+     * @param IInterface $uInterface   interface class
      *
      * @return int exit code
      */
-    public function executeTask(array $uParameters)
+    public function executeTask(array $uParameters, $uInterface = null)
     {
-        echo "not yet.";
+        // TODO populate fixtures
+        $tFixtures = [];
 
-        return 0;
+        Testing::coverageStart();
+        $tExitCode = Testing::runUnitTests($tFixtures, $uInterface);
+        $tCoverageReport = Testing::coverageStop();
+
+        if ($tCoverageReport !== null) {
+            $tCoverage = round($tCoverageReport["total"]["percentage"], 2) . "%";
+        } else {
+            $tCoverage = "unknown";
+        }
+
+        $uInterface->writeColor("green", sprintf("Code Coverage = %s", $tCoverage));
+        $uInterface->writeColor("yellow", "done.");
+
+        return $tExitCode;
     }
 
     /**
      * Returns the usage form and list of available parameters
      *
-     * @return array usage summary
+     * @param IInterface $uInterface   interface class
+     *
+     * @return void
      */
-    public function help()
+    public function help($uInterface = null)
     {
-        return [];
     }
 }
