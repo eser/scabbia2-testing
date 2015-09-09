@@ -25,8 +25,10 @@
         "scabbiafw/scabbia2-helpers": "*"
     },
     "require-dev": {
+        "scabbiafw/scabbia2-tasks": "*"
     },
     "suggest": {
+        "ext-xdebug": "Required for coverage reports"
     },
     "autoload": {
         "psr-4": {
