@@ -14,9 +14,8 @@
 namespace Scabbia\Testing;
 
 use Scabbia\Helpers\FileSystem;
-use Scabbia\Interfaces\Console;
-use Scabbia\Interfaces\WebPage;
-use Scabbia\Interfaces\IInterface;
+use Scabbia\Formatters\FormatterInterface;
+use Scabbia\Formatters\Formatters;
 
 /**
  * A small test implementation which helps us during the development of
@@ -31,28 +30,24 @@ class Testing
     /**
      * Runs given unit tests
      *
-     * @param array      $uTestClasses set of unit test classes
-     * @param IInterface $uInterface   interface class
+     * @param array              $uTestClasses set of unit test classes
+     * @param FormatterInterface $uFormatter   formatter class
      *
      * @return int exit code
      */
-    public static function runUnitTests(array $uTestClasses, $uInterface = null)
+    public static function runUnitTests(array $uTestClasses, $uFormatter = null)
     {
-        if ($uInterface === null) {
-            if (PHP_SAPI === "cli") {
-                $uInterface = new Console();
-            } else {
-                $uInterface = new WebPage();
-            }
+        if ($uFormatter === null) {
+            $uFormatter = Formatters::getCurrent();
         }
 
         $tIsEverFailed = false;
 
-        $uInterface->writeHeader(1, "Unit Tests");
+        $uFormatter->writeHeader(1, "Unit Tests");
 
         /** @type string $tTestClass */
         foreach ($uTestClasses as $tTestClass) {
-            $uInterface->writeHeader(2, $tTestClass);
+            $uFormatter->writeHeader(2, $tTestClass);
 
             $tInstance = new $tTestClass ();
             $tInstance->test();
@@ -61,7 +56,7 @@ class Testing
                 $tIsEverFailed = true;
             }
 
-            // $uInterface->writeArray($tInstance->testReport);
+            // $uFormatter->writeArray($tInstance->testReport);
             foreach ($tInstance->testReport as $tTestName => $tTest) {
                 $tFails = [];
                 foreach ($tTest as $tTestCase) {
@@ -74,10 +69,10 @@ class Testing
                 }
 
                 if (count($tFails) === 0) {
-                    $uInterface->write(sprintf("[OK] %s", $tTestName));
+                    $uFormatter->write(sprintf("[OK] %s", $tTestName));
                 } else {
-                    $uInterface->writeColor("red", sprintf("[FAIL] %s", $tTestName));
-                    $uInterface->writeArray($tFails);
+                    $uFormatter->writeColor("red", sprintf("[FAIL] %s", $tTestName));
+                    $uFormatter->writeArray($tFails);
                 }
             }
         }

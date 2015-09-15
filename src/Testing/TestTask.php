@@ -13,8 +13,7 @@
 
 namespace Scabbia\Testing;
 
-use Scabbia\Interfaces\IInterface;
-use Scabbia\Interfaces\Interfaces;
+use Scabbia\Formatters\FormatterInterface;
 use Scabbia\Tasks\TaskBase;
 use Scabbia\Testing\Testing;
 
@@ -41,18 +40,18 @@ class TestTask extends TaskBase
     /**
      * Executes the task
      *
-     * @param array      $uParameters  parameters
-     * @param IInterface $uInterface   interface class
+     * @param array              $uParameters  parameters
+     * @param FormatterInterface $uFormatter   formatter class
      *
      * @return int exit code
      */
-    public function executeTask(array $uParameters, $uInterface = null)
+    public function executeTask(array $uParameters, $uFormatter = null)
     {
         // TODO populate fixtures
         $tFixtures = [];
 
         Testing::coverageStart();
-        $tExitCode = Testing::runUnitTests($tFixtures, $uInterface);
+        $tExitCode = Testing::runUnitTests($tFixtures, $uFormatter);
         $tCoverageReport = Testing::coverageStop();
 
         if ($tCoverageReport !== null) {
@@ -61,8 +60,8 @@ class TestTask extends TaskBase
             $tCoverage = "unknown";
         }
 
-        $uInterface->writeColor("green", sprintf("Code Coverage = %s", $tCoverage));
-        $uInterface->writeColor("yellow", "done.");
+        $uFormatter->writeColor("green", sprintf("Code Coverage = %s", $tCoverage));
+        $uFormatter->writeColor("yellow", "done.");
 
         return $tExitCode;
     }
@@ -70,11 +69,11 @@ class TestTask extends TaskBase
     /**
      * Returns the usage form and list of available parameters
      *
-     * @param IInterface $uInterface   interface class
+     * @param FormatterInterface $uFormatter   formatter class
      *
      * @return void
      */
-    public function help($uInterface = null)
+    public function help($uFormatter = null)
     {
     }
 }
