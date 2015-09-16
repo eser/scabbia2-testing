@@ -38,7 +38,8 @@
         "scabbiafw/scabbia2-helpers": "*"
     },
     "require-dev": {
-        "scabbiafw/scabbia2-tasks": "*"
+        "scabbiafw/scabbia2-tasks": "*",
+        "squizlabs/php_codesniffer": "2.*"
     },
     "suggest": {
         "ext-xdebug": "Required for coverage reports"

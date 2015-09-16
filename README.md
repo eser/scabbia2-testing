@@ -1,6 +1,6 @@
 # Scabbia2 Testing Component
 
-[This repository](https://github.com/scabbiafw/scabbia2-testing/) provides a code testing framework and environment. Simply execute `./vendor/bin/scabbia scabbia:testing:test` to start unit tests.
+[This component](https://github.com/scabbiafw/scabbia2-testing/) provides a code testing framework and environment. Simply execute `./vendor/bin/scabbia scabbia:testing:test` to start unit tests.
 
 [![Build Status](https://travis-ci.org/scabbiafw/scabbia2-testing.png?branch=master)](https://travis-ci.org/scabbiafw/scabbia2-testing)
 [![Total Downloads](https://poser.pugx.org/scabbiafw/scabbia2-testing/downloads.png)](https://packagist.org/packages/scabbiafw/scabbia2-testing)
