@@ -3,11 +3,11 @@
 [This component](https://github.com/scabbiafw/scabbia2-testing/) provides a code testing framework and environment. Simply execute `./vendor/bin/scabbia scabbia:testing:test` to start unit tests.
 
 [![Build Status](https://travis-ci.org/scabbiafw/scabbia2-testing.png?branch=master)](https://travis-ci.org/scabbiafw/scabbia2-testing)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/scabbiafw/scabbia2-testing/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/scabbiafw/scabbia2-testing/?branch=master)
 [![Total Downloads](https://poser.pugx.org/scabbiafw/scabbia2-testing/downloads.png)](https://packagist.org/packages/scabbiafw/scabbia2-testing)
 [![Latest Stable Version](https://poser.pugx.org/scabbiafw/scabbia2-testing/v/stable)](https://packagist.org/packages/scabbiafw/scabbia2-testing)
 [![Latest Unstable Version](https://poser.pugx.org/scabbiafw/scabbia2-testing/v/unstable)](https://packagist.org/packages/scabbiafw/scabbia2-testing)
 [![Documentation Status](https://readthedocs.org/projects/scabbia2-documentation/badge/?version=latest)](http://docs.scabbiafw.com/)
-[![License](https://poser.pugx.org/scabbiafw/scabbia2-testing/license.png)](https://packagist.org/packages/scabbiafw/scabbia2-testing)
 
 ## Links
 - [Documentation](http://docs.scabbiafw.com/)

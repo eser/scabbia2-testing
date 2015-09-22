@@ -28,9 +28,9 @@ use Scabbia\Testing\Testing;
 class TestTask extends TaskBase
 {
     /**
-     * Initializes a task
+     * Initializes a test task
      *
-     * @return Test
+     * @return TestTask
      */
     public function __construct()
     {
