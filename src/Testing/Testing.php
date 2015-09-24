@@ -56,7 +56,6 @@ class Testing
                 $tIsEverFailed = true;
             }
 
-            // $uFormatter->writeArray($tInstance->testReport);
             foreach ($tInstance->testReport as $tTestName => $tTest) {
                 $tFails = [];
                 foreach ($tTest as $tTestCase) {

@@ -29,8 +29,6 @@ class TestTask extends TaskBase
 {
     /**
      * Initializes a test task
-     *
-     * @return TestTask
      */
     public function __construct()
     {
@@ -45,7 +43,7 @@ class TestTask extends TaskBase
      *
      * @return int exit code
      */
-    public function executeTask(array $uParameters, $uFormatter = null)
+    public function executeTask(array $uParameters, FormatterInterface $uFormatter)
     {
         // TODO populate fixtures
         $tFixtures = [];
@@ -73,7 +71,7 @@ class TestTask extends TaskBase
      *
      * @return void
      */
-    public function help($uFormatter = null)
+    public function help(FormatterInterface $uFormatter)
     {
     }
 }
