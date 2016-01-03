@@ -9,6 +9,39 @@
 [![Latest Unstable Version](https://poser.pugx.org/eserozvataf/scabbia2-testing/v/unstable)](https://packagist.org/packages/eserozvataf/scabbia2-testing)
 [![Documentation Status](https://readthedocs.org/projects/scabbia2-documentation/badge/?version=latest)](https://readthedocs.org/projects/scabbia2-documentation)
 
+## Usage
+
+### Writing a Test Fixture
+
+```php
+namespace MyProject\Tests;
+use Scabbia\Yaml\Parser;
+
+use Scabbia\Testing\UnitTestFixture;
+
+class MyTest extends UnitTestFixture {
+    protected $parser;
+
+    protected function setUp() {
+        $this->parser = new Parser();
+    }
+
+    protected function tearDown() {
+        $this->parser = null;
+    }
+
+    public function testCase1() {
+        $this->assertEquals('a', 'a');
+    }
+
+    public function testCase2() {
+        $this->expectException('Scabbia\\Yaml\\ParseException');
+
+        $this->parser->parse('/&afasda:sd|_*a');
+    }
+}
+```
+
 ## Links
 - [List of All Scabbia2 Components](https://github.com/eserozvataf/scabbia2)
 - [Documentation](https://readthedocs.org/projects/scabbia2-documentation)
