@@ -16,14 +16,13 @@
 ```php
 namespace MyProject\Tests;
 
-use Scabbia\Yaml\Parser;
 use Scabbia\Testing\UnitTestFixture;
 
 class MyTest extends UnitTestFixture {
     protected $parser;
 
     protected function setUp() {
-        $this->parser = new Parser();
+        $this->parser = new \Scabbia\Yaml\Parser\Parser();
     }
 
     protected function tearDown() {
