@@ -15,8 +15,8 @@
 
 ```php
 namespace MyProject\Tests;
-use Scabbia\Yaml\Parser;
 
+use Scabbia\Yaml\Parser;
 use Scabbia\Testing\UnitTestFixture;
 
 class MyTest extends UnitTestFixture {
